@@ -1,0 +1,17 @@
+[project]
+name = "grpc-init"
+version = "1.0.1"
+description = "CLI tool to scaffold gRPC service definitions and Python stubs"
+authors = [
+    { name="Achraf Mataich", email="achraf.mataich@outlook.com" }
+]
+dependencies = [
+    "typer[all]",
+    "jinja2",
+    "grpcio-tools"
+]
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+grpc-init = "grpc_init:app"
