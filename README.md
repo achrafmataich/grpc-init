@@ -1,4 +1,4 @@
-# gRPC Proto Generator CLI 🧬
+# gRPC Proto Generator CLI
 
 A powerful Typer-based CLI tool to **generate `.proto` files** for gRPC services from simple command-line arguments. Supports **CRUD**, **simple**, and **enhanced streaming** methods with optional Python stub compilation.
 

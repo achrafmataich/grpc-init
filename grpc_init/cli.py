@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 from typing import List, Tuple
 from .utils import generate_crud_proto
+from .__version__ import __version__
 
 app = typer.Typer()
 
@@ -426,6 +427,11 @@ def check_grpc_tools():
     except ImportError:
         return False
 
+def show_version_callback(value: bool):
+    if value:
+        typer.echo(f"grpc-init version {__version__}")
+        raise typer.Exit()
+
 @app.command()
 def init(
     service: str = typer.Option(..., help="Service name, e.g. UserService"),
@@ -437,6 +443,13 @@ def init(
     response: str = typer.Option("ResponseMessage", help="Response message name (only for simple methods)"),
     fields: str = typer.Option(None, help="Fields for simple methods or fallback: id:int32,name:string"),
     out: Path = typer.Option("protos", help="Output folder for the .proto file"), 
+    version: bool = typer.Option(
+        None,
+        "--version", "-v",
+        callback=show_version_callback,
+        is_eager=True,
+        help="Show the version",
+    ),
     compile: bool = typer.Option(False, help="Compile Python stubs using grpcio-tools")
 ):
     """Generate gRPC service definition (.proto file) and optionally compile Python stubs."""

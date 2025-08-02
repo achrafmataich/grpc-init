@@ -20,3 +20,6 @@ grpc_init.egg-info/
 .coverage.*
 
 .venv/
+
+*egg-info/
+dist/
